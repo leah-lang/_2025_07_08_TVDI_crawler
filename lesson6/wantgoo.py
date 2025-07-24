@@ -115,20 +115,3 @@ async def get_stock_data(urls)-> list[dict]:
         all_results.append(stack_data[0])
 
     return all_results
-
-if __name__ == '__main__':
-    urls = [
-        "https://www.wantgoo.com/stock/2330/technical-chart",
-        "https://www.wantgoo.com/stock/2317/technical-chart",
-        "https://www.wantgoo.com/stock/2454/technical-chart",
-        "https://www.wantgoo.com/stock/2303/technical-chart",
-        "https://www.wantgoo.com/stock/2412/technical-chart",
-        "https://www.wantgoo.com/stock/2884/technical-chart",
-        "https://www.wantgoo.com/stock/2881/technical-chart",
-        "https://www.wantgoo.com/stock/2308/technical-chart",
-        "https://www.wantgoo.com/stock/2337/technical-chart",
-        "https://www.wantgoo.com/stock/2882/technical-chart",
-    ]
-    reuslts:list[dict] = asyncio.run(get_stock_data(urls=urls))
-    for stock in reuslts:
-        print(stock)
