@@ -6,6 +6,11 @@ try:
 except ImportError:
     raise ImportError("請確保已安裝 wantgoo 模組，或將 wantgoo.py 放在相同目錄下。")
 
+try:
+    import wantgoo
+except ImportError:
+    raise ImportError("請確保已安裝 wantgoo 模組，或將 wantgoo.py 放在相同目錄下。")
+
 class SimpleApp:
     def __init__(self, root):
         self.root = root
@@ -66,6 +71,7 @@ class SimpleApp:
         # 建立root_right_frame來包含選取股票的資訊
         root_right_frame = tk.Frame(self.root)
         root_right_frame.pack(side=tk.RIGHT, pady=10,padx=10,fill=tk.BOTH, expand=True)
+<<<<<<< HEAD
         # 在右側顯示選取的股票資訊
         # 增加self.selected_button按鈕click功能
         self.selected_button = tk.Button(
@@ -89,6 +95,18 @@ class SimpleApp:
                 
         """當股票被選取時，更新右側顯示的資訊"""
         self.selected_stocks = [self.stock_listbox.get(i) for i in self.stock_listbox.curselection()]        
+=======
+
+        # 在右側顯示選取的股票資訊
+        self.selected_button = tk.Button(root_right_frame, text="選取的股票數量是0筆", font=("Arial"),state=tk.DISABLED)
+        self.selected_button.pack(pady=10)    
+
+    
+    def on_stock_select(self, _=None):
+        """當股票被選取時，更新右側顯示的資訊"""
+        self.selected_stocks = [self.stock_listbox.get(i) for i in self.stock_listbox.curselection()]
+        print(f"選取的股票: {self.selected_stocks}")
+>>>>>>> 3666f65e08ea4d23400b71bec38ea8dad21e08d6
         self.selected_button.config(text=f"選取的股票數量是:{len(self.selected_stocks)}筆")
         if len(self.selected_stocks) == 0:
             self.selected_button.config(state=tk.DISABLED)
@@ -99,6 +117,7 @@ class SimpleApp:
     def clear_selection(self):
         """清除選取的股票資訊"""
         self.stock_listbox.selection_clear(0, tk.END)
+<<<<<<< HEAD
         self.on_stock_select()  # 更新右側顯示的資訊
 
     def start_crawling(self, event=None):
@@ -106,6 +125,8 @@ class SimpleApp:
         # 在這裡可以加入爬蟲邏輯
         # 例如: wantgoo.crawl_stocks(self.selected_stocks)
         messagebox.showinfo("資訊", f"開始爬取以下股票: {', '.join(self.selected_stocks)}")
+=======
+>>>>>>> 3666f65e08ea4d23400b71bec38ea8dad21e08d6
 
     
 
